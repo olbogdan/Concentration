@@ -8,19 +8,37 @@
 import Foundation
 
 class Concentration {
-            
     var cards = [Card]()
-    
-    var indexOfOneAndOnlyFaceUpCard: Int?
-    
+
+    var indexOfOneAndOnlyFaceUpCard: Int? {
+        get {
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp {
+                    if foundIndex == nil {
+                        foundIndex = index
+                    } else {
+                        return nil
+                    }
+                }
+            }
+            return foundIndex
+        }
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = index == newValue
+            }
+        }
+    }
+
     init(numberOfPairOfCards: Int) {
         resetCards(numberOfPairOfCards)
     }
-    
+
     func resetCards(_ numberOfPairOfCards: Int) {
         indexOfOneAndOnlyFaceUpCard = nil
         cards.removeAll()
-        for _ in 1...numberOfPairOfCards {
+        for _ in 1 ... numberOfPairOfCards {
             let card = Card()
             cards += [card, card]
         }
@@ -36,13 +54,8 @@ class Concentration {
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
             } else {
                 // eitther no cards or 2 cards are face up
-                for flipDownIndex in cards.indices {
-                    cards[flipDownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
