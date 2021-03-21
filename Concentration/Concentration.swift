@@ -14,13 +14,19 @@ class Concentration {
     var indexOfOneAndOnlyFaceUpCard: Int?
     
     init(numberOfPairOfCards: Int) {
+        resetCards(numberOfPairOfCards)
+    }
+    
+    func resetCards(_ numberOfPairOfCards: Int) {
+        indexOfOneAndOnlyFaceUpCard = nil
+        cards.removeAll()
         for _ in 1...numberOfPairOfCards {
             let card = Card()
             cards += [card, card]
         }
         cards.shuffle()
     }
-    
+
     func chooseCard(at index: Int) {
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {

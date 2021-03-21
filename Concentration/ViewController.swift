@@ -30,6 +30,13 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func restartGame(_ sender: UIButton) {
+        flipCount = 0
+        emojiChoises = ["🤡", "❤️", "✏️", "🌲", "🏡", "👩‍🎓", "🧑‍💻", "🏋️"]
+        game.resetCards((cardButtons.count + 1) / 2)
+        updateViewFromModel()
+    }
+    
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
