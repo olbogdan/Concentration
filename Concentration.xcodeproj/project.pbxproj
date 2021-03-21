@@ -15,6 +15,7 @@
 		6814206926041FDE00A15CE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6814206726041FDE00A15CE7 /* LaunchScreen.storyboard */; };
 		6841371B2606A986007E568C /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6841371A2606A986007E568C /* Concentration.swift */; };
 		6841371F2606AA57007E568C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6841371E2606AA57007E568C /* Card.swift */; };
+		68B15B192607D22800B2C9DE /* libswiftMapKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B15B182607D22800B2C9DE /* libswiftMapKit.tbd */; };
 		68DBDA07260634080046066D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 68DBDA06260634080046066D /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		6814206A26041FDE00A15CE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6841371A2606A986007E568C /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
 		6841371E2606AA57007E568C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		68B15B182607D22800B2C9DE /* libswiftMapKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftMapKit.tbd; path = usr/lib/swift/libswiftMapKit.tbd; sourceTree = SDKROOT; };
 		68DBDA06260634080046066D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B15B192607D22800B2C9DE /* libswiftMapKit.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +52,7 @@
 				68DBDA06260634080046066D /* .gitignore */,
 				6814205B26041FDD00A15CE7 /* Concentration */,
 				6814205A26041FDD00A15CE7 /* Products */,
+				68B15B172607D22800B2C9DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +86,14 @@
 				6814206726041FDE00A15CE7 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		68B15B172607D22800B2C9DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68B15B182607D22800B2C9DE /* libswiftMapKit.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +325,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bogdanov.lecture.Concentration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -331,6 +347,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bogdanov.lecture.Concentration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
