@@ -13,14 +13,18 @@ class ViewController: UIViewController {
     var numberOfPairsOfCards: Int {
         return (cardButtons.count + 1) / 2
     }
-
-    private private(set) var flipCount = 0 {
+    
+    var flipCount = 0 {
         didSet {
-            flipCountLabel.text = "Flips \(flipCount)"
+            updateFlipCountLabel()
         }
     }
     
-    @IBOutlet private var flipCountLabel: UITextField!
+    @IBOutlet private var flipCountLabel: UITextField! {
+        didSet {
+            updateFlipCountLabel()
+        }
+    }
     
     @IBOutlet private var cardButtons: [UIButton]!
     
@@ -68,6 +72,15 @@ class ViewController: UIViewController {
         }
         
         return emoji[card] ?? "?"
+    }
+    
+    private func updateFlipCountLabel() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .strokeWidth: 5.0,
+            .strokeColor: UIColor.yellow
+        ]
+        let attributedString = NSAttributedString(string: "Flips \(flipCount)", attributes: attributes)
+        flipCountLabel.attributedText = attributedString
     }
 }
 
