@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card : Hashable {
+struct Card: Hashable {
     var isFaceUp = false
     var isMatched = false
     private var identifier: Int
@@ -22,11 +22,11 @@ struct Card : Hashable {
     init() {
         self.identifier = Card.getUniqueIdentifier()
     }
-    
+
     static func == (lhs: Card, rhs: Card) -> Bool {
         return lhs.identifier == rhs.identifier
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(identifier)
     }

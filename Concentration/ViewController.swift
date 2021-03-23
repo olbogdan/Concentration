@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     @IBOutlet private var cardButtons: [UIButton]!
     
-    // MARK: Handle Card Touch Behaviour
+    // MARK: Handle Card Touch Behavior
 
     @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     
     @IBAction private func restartGame(_ sender: UIButton) {
         flipCount = 0
-        emojiChoises = ["🤡", "❤️", "✏️", "🌲", "🏡", "👩‍🎓", "🧑‍💻", "🏋️"]
+        emojiChoices = "🤡❤️✏️🌲🏡👩‍🎓🧑‍💻🏋️"
         game.resetCards(numberOfPairsOfCards)
         updateViewFromModel()
     }
@@ -57,13 +57,14 @@ class ViewController: UIViewController {
         }
     }
     
-    private var emojiChoises = ["🤡", "❤️", "✏️", "🌲", "🏡", "👩‍🎓", "🧑‍💻", "🏋️"]
+    private var emojiChoices = "🤡❤️✏️🌲🏡👩‍🎓🧑‍💻🏋️"
     
     private var emoji = [Card: String]()
     
     func emoji(for card: Card) -> String {
-        if emoji[card] == nil, emojiChoises.count > 0 {
-            emoji[card] = emojiChoises.remove(at: emojiChoises.count.arc4random)
+        if emoji[card] == nil, emojiChoices.count > 0 {
+            let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
+            emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
         }
         
         return emoji[card] ?? "?"
