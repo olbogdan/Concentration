@@ -57,7 +57,7 @@ struct Concentration {
                 }
                 cards[index].isFaceUp = true
             } else {
-                // eitther no cards or 2 cards are face up
+                // either no cards or 2 cards are face up
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
