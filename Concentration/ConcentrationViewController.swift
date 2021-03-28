@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConcentrationViewController: UIViewController {
     private lazy var game = Concentration(numberOfPairOfCards: numberOfPairsOfCards)
     
     var numberOfPairsOfCards: Int {
@@ -48,20 +48,29 @@ class ViewController: UIViewController {
     }
     
     func updateViewFromModel() {
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp {
-                button.setTitle(emoji(for: card), for: UIControl.State.normal)
-                button.backgroundColor = UIColor.white
-            } else {
-                button.setTitle(nil, for: UIControl.State.normal)
-                button.backgroundColor = card.isMatched ? nil : UIColor.orange
+        if cardButtons != nil {
+            for index in cardButtons.indices {
+                let button = cardButtons[index]
+                let card = game.cards[index]
+                if card.isFaceUp {
+                    button.setTitle(emoji(for: card), for: UIControl.State.normal)
+                    button.backgroundColor = UIColor.gray
+                } else {
+                    button.setTitle(nil, for: UIControl.State.normal)
+                    button.backgroundColor = card.isMatched ? nil : UIColor.systemBlue
+                }
             }
         }
     }
     
     private var emojiChoices = "🤡❤️✏️🌲🏡👩‍🎓🧑‍💻🏋️"
+    var theme: String? {
+        didSet {
+            emojiChoices = theme ?? ""
+            emoji = [:]
+            updateViewFromModel()
+        }
+    }
     
     private var emoji = [Card: String]()
     
@@ -77,7 +86,7 @@ class ViewController: UIViewController {
     private func updateFlipCountLabel() {
         let attributes: [NSAttributedString.Key: Any] = [
             .strokeWidth: 5.0,
-            .strokeColor: UIColor.yellow
+            .strokeColor: UIColor.systemBlue
         ]
         let attributedString = NSAttributedString(string: "Flips \(flipCount)", attributes: attributes)
         flipCountLabel.attributedText = attributedString
