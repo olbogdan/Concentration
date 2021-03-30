@@ -27,8 +27,6 @@ class ConcentrationViewController: UIViewController {
     }
     
     @IBOutlet private var cardButtons: [UIButton]!
-    
-    // MARK: Handle Card Touch Behavior
 
     @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
@@ -47,17 +45,37 @@ class ConcentrationViewController: UIViewController {
         updateViewFromModel()
     }
     
+    fileprivate func updateCardStyle(_ button: UIButton, _ card: Card) {
+        button.setTitle(emoji(for: card), for: .normal)
+        if card.isFaceUp {
+            button.backgroundColor = UIColor.systemTeal
+        } else {
+            button.backgroundColor = UIColor.systemBlue
+        }
+    }
+    
+    fileprivate func flipOnCardChanged(_ button: UIButton, _ card: Card) {
+        let newTitle = emoji(for: card)
+        if button.currentTitle != nil, button.currentTitle != newTitle {
+            UIView.transition(with: button, duration: 0.6, options: [.transitionFlipFromLeft], animations: { [self] in
+                updateCardStyle(button, card)
+            })
+        } else {
+            updateCardStyle(button, card)
+        }
+    }
+    
     func updateViewFromModel() {
         if cardButtons != nil {
             for index in cardButtons.indices {
                 let button = cardButtons[index]
                 let card = game.cards[index]
-                if card.isFaceUp {
-                    button.setTitle(emoji(for: card), for: UIControl.State.normal)
-                    button.backgroundColor = UIColor.gray
+                flipOnCardChanged(button, card)
+                if card.isMatched {
+                    button.setTitle(nil, for: .normal)
+                    button.backgroundColor = nil
                 } else {
-                    button.setTitle(nil, for: UIControl.State.normal)
-                    button.backgroundColor = card.isMatched ? nil : UIColor.systemBlue
+                    flipOnCardChanged(button, card)
                 }
             }
         }
@@ -75,6 +93,9 @@ class ConcentrationViewController: UIViewController {
     private var emoji = [Card: String]()
     
     func emoji(for card: Card) -> String {
+        if !card.isFaceUp {
+            return ""
+        }
         if emoji[card] == nil, emojiChoices.count > 0 {
             let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
             emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
