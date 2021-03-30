@@ -57,12 +57,34 @@ class ConcentrationViewController: UIViewController {
     fileprivate func flipOnCardChanged(_ button: UIButton, _ card: Card) {
         let newTitle = emoji(for: card)
         if button.currentTitle != nil, button.currentTitle != newTitle {
-            UIView.transition(with: button, duration: 0.6, options: [.transitionFlipFromLeft], animations: { [self] in
-                updateCardStyle(button, card)
-            })
+            UIView.transition(with: button,
+                              duration: 0.6,
+                              options: [.transitionFlipFromLeft],
+                              animations: { [self] in
+                                  updateCardStyle(button, card)
+                              })
         } else {
             updateCardStyle(button, card)
         }
+    }
+    
+    fileprivate func hideWithAnimation(_ button: UIButton) {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.6,
+                                                       delay: 0,
+                                                       options: [],
+                                                       animations: {
+                                                           button.transform = CGAffineTransform.identity.scaledBy(x: 3.0, y: 3.0)
+                                                       },
+                                                       completion: { _ in
+                                                           UIViewPropertyAnimator.runningPropertyAnimator(
+                                                               withDuration: 0.6,
+                                                               delay: 0,
+                                                               options: [],
+                                                               animations: {
+                                                                   button.transform = CGAffineTransform.identity.scaledBy(x: 0.1, y: 0.1)
+                                                                   button.alpha = 0
+                                                               })
+                                                       })
     }
     
     func updateViewFromModel() {
@@ -72,8 +94,7 @@ class ConcentrationViewController: UIViewController {
                 let card = game.cards[index]
                 flipOnCardChanged(button, card)
                 if card.isMatched {
-                    button.setTitle(nil, for: .normal)
-                    button.backgroundColor = nil
+                    hideWithAnimation(button)
                 } else {
                     flipOnCardChanged(button, card)
                 }
