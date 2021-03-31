@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConcentrationViewController: UIViewController {
+class ConcentrationViewController: VCLLoggingViewController {
     private lazy var game = Concentration(numberOfPairOfCards: numberOfPairsOfCards)
     
     var numberOfPairsOfCards: Int {
@@ -18,6 +18,10 @@ class ConcentrationViewController: UIViewController {
         didSet {
             updateFlipCountLabel()
         }
+    }
+    
+    override var vclLoggingName: String {
+        return "ConcentrationView"
     }
     
     @IBOutlet private var flipCountLabel: UITextField! {

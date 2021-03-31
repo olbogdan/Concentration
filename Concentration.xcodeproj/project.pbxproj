@@ -18,6 +18,7 @@
 		685F8B49261131C90063CF18 /* ConcentrationThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685F8B48261131C90063CF18 /* ConcentrationThemeChooserViewController.swift */; };
 		68B15B192607D22800B2C9DE /* libswiftMapKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B15B182607D22800B2C9DE /* libswiftMapKit.tbd */; };
 		68DBDA07260634080046066D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 68DBDA06260634080046066D /* .gitignore */; };
+		68E246CF26151BEF00A31C74 /* VCLLoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E246CE26151BEF00A31C74 /* VCLLoggingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		685F8B48261131C90063CF18 /* ConcentrationThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationThemeChooserViewController.swift; sourceTree = "<group>"; };
 		68B15B182607D22800B2C9DE /* libswiftMapKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftMapKit.tbd; path = usr/lib/swift/libswiftMapKit.tbd; sourceTree = SDKROOT; };
 		68DBDA06260634080046066D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		68E246CE26151BEF00A31C74 /* VCLLoggingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCLLoggingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				6841371A2606A986007E568C /* Concentration.swift */,
 				6841371E2606AA57007E568C /* Card.swift */,
 				685F8B48261131C90063CF18 /* ConcentrationThemeChooserViewController.swift */,
+				68E246CE26151BEF00A31C74 /* VCLLoggingViewController.swift */,
 			);
 			path = Concentration;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E246CF26151BEF00A31C74 /* VCLLoggingViewController.swift in Sources */,
 				6814206126041FDD00A15CE7 /* ConcentrationViewController.swift in Sources */,
 				6841371B2606A986007E568C /* Concentration.swift in Sources */,
 				6841371F2606AA57007E568C /* Card.swift in Sources */,
